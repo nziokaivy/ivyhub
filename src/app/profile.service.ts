@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,12 @@ export class ProfileService {
 
   constructor(private http: HttpClient) {
     console.log("We are ready!");
-    return this.http.get()
+    this.userName = '';
+   }
+   getProfileInfo(){
+     return this.http.get("https://api.github.com/users/" + this.userName
+      + "'?client_id=" + this.clientId 
+      + "&client_secret=" + this.clientSecret)
+      .map(res => res.json());
    }
 }
