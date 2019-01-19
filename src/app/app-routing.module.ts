@@ -4,7 +4,10 @@ import { ProfileComponent } from './profile/profile.component';
 
 
 
-const routes: Routes = []
+const routes: Routes = [
+  { path: 'search', component: ProfileComponent },
+  { path: '', redirectTo: '/search', pathMatch: 'full' }
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
