@@ -16,7 +16,8 @@ export class ProfileService {
     console.log("We are ready!");
     this.userName = '';
    }
-   getProfileInfo(){
+   
+  getProfileInfo(){
      if(this.userName) {
      return this.http.get("https://api.github.com/users/" + this.userName
       + "'?client_id=" + this.clientId 

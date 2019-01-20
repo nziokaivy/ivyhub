@@ -1,9 +1,9 @@
 <div><h2>Search</h2>
 <form>
-  <input type="search" name="query" [(ngModel)]="query" (keyup.enter)="search()">
+  <input type="search" (keyup.enter)="search()">
   <button type="button" (click)="search()">Search</button>
 </form>
 </div>
-<div *ngIf="profile">
-{{profile.name}}
+<div>
+{{user.user.login}}
 </div>

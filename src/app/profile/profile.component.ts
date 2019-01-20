@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProfileService } from '../profile.service';
 import { User } from '../profile';
 import { map } from 'rxjs/operators';
@@ -9,9 +9,9 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-    profile: any[];
+    @Input() user: User;   
 
-  constructor(private profileService: ProfileService) {}
+  constructor() {}
 
   ngOnInit() {
   }
