@@ -10,16 +10,25 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-    // @Input() user: User;   
-  
-
-  constructor(private profileservice: ProfileService) {
-    this.profileservice.getProfileInfo().subscribe(profile => {
-      console.log(profile);
-    });
-  }
-
   ngOnInit() {
-  }
+   }
+   
+  profile: object;
+  repos: any[];
+  username: string;
+  profileservice: ProfileService;
+    // @Input() user: User;   
 
-}
+  search() {
+    this.profileservice.updateProfile(this.username);
+      this.profileservice.getProfileInfo().subscribe(profile => {
+        console.log(profile);
+        this.profile = profile;
+      });
+    
+  this.profileservice.getRepoInfo().subscribe(repos => {
+    this.repos = repos;
+  })
+    }
+
+  }

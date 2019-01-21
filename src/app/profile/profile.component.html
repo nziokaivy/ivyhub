@@ -1,7 +1,7 @@
 <div>
   <h2>Search</h2>
 <form>
-  <input type="search" name="query" (keyup.enter)="search()" [(ngModel)]="userName">
+  <input type="search" name="username" (keyup.enter)="search()" [(ngModel)]="userName">
   <button type="button" (click)="search()">Search</button>
 </form>
 </div>
@@ -32,13 +32,16 @@
           <span class="label label-info">{{profile.public_repos}} Public Repos</span>
               
         </p>
-        <p><a href="{{profile.html_url}}" target="blank class="btn btn-default">View Profile on github</a></p>
+        <p><a href="{{profile.html_url}}" target="_blank" class="btn btn-default">View Profile on github</a></p>
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">Repositories</h3>
           </div>
           <div class="panel-body" *ngFor="let repo of repos">
-            
+           <p class="clearfix">
+             {{repo.name}} <a href="{{repo.html_url}}" target="_blank" class="btn btn-sm btn-warning pull-right">View this project on github</a>
+           </p> 
+           <p>{{repo.description}}</p>
           </div>
         </div>
       </div>
