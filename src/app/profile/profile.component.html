@@ -1,9 +1,23 @@
-<div><h2>Search</h2>
+<div>
+  <h2>Search</h2>
 <form>
-  <input type="search" (keyup.enter)="search()">
+  <input type="search" name="query" (keyup.enter)="search()" [(ngModel)]="userName">
   <button type="button" (click)="search()">Search</button>
 </form>
 </div>
 <div>
-{{user.user.login}}
+  <br>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+  {{profile.name}}
+  Works at: {{profile.company}}
+</div>
+<div class="panel-body">
+  <div class="row">
+    <div class="col-sm-3">
+      <img src="{{profile.avatar_url}}" alt="">
+    </div>
+  </div>
+</div>
+</div>
 </div>
