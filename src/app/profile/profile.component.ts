@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProfileService } from '../profile.service';
-// import { User } from '../profile';
-import { map } from 'rxjs/operators';
-
+import { environment } from '../../environments/environment';
+import { Profile } from '../profile';
 
 @Component({
   selector: 'app-profile',
@@ -10,25 +9,28 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  ngOnInit() {
-   }
-   
-  profile: object;
+  profile:any[];
   repos: any[];
-  username: string;
-  profileservice: ProfileService;
-    // @Input() user: User;   
+  username:string;
 
-  search() {
-    this.profileservice.updateProfile(this.username);
-      this.profileservice.getProfileInfo().subscribe(profile => {
-        console.log(profile);
-        this.profile = profile;
-      });
-    
-  this.profileservice.getRepoInfo().subscribe(repos => {
-    this.repos = repos;
-  })
-    }
+  constructor(private profileService: ProfileService) { 
 
   }
+
+  findProfile(){
+  	this.profileService.updateProfile(this.username);
+  	this.profileService.getProfileInfo().subscribe(profile => {
+  		console.log(profile);
+  		this.profile = profile;
+  	});
+
+  	this.profileService.getRepoInfo().subscribe(repos => {
+  		console.log(repos);
+  		this.repos = repos;
+  	})  	
+  }
+
+  ngOnInit() {
+  }
+
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from './profile';
+import { Profile} from './profile';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +8,6 @@ import { User } from './profile';
 })
 export class AppComponent {
   title = 'IvyHub';
-  public user1: User;
+ 
 
-constructor () {
-  this.user1 = new User(false,null, '');
- }
 }

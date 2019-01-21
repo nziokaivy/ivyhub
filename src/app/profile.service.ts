@@ -1,47 +1,47 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient , HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { pipe } from 'rxjs';
-// import { User } from './profile'
+import { environment } from '../environments/environment';
+import { Profile } from './profile';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+ 
 export class ProfileService {
-  getProfileRepos(): any {
-    throw new Error("Method not implemented.");
-  }
-  private userName: string;
-  private clientId = 'b67065b9d497b73f0da3';
-  private clientSecret =  '2e59dc982760d82633f4e3b37a9a0315b3b0fd1b';
 
-  constructor(private http: HttpClient) {
-    console.log("Github is ready!");
-    this.userName = '';
-   }
+  apiUrl = environment.apiUrl;
+  private username : string;
+  private reponame :string;
+  
+  //private clientid:'45c711be5b7b227c5b653';
+ // private clientsecret:'9b5026866f07b1eb08440f7581b9ab0dd49e604a';
+  
+  constructor( private http :HttpClient) { 
+      console.log ("service is now working !");
+      this.username = 'nziokaivy';
+     
    
-  getProfileInfo(){
-         return this.http.get("https://api.github.com/users/nziokaivy" + this.userName
-      + "?client_id=" + this.clientId 
-      + "&client_secret=" + this.clientSecret)
-      .pipe(
-        map(res => res)
-      );
-   }
-  
+      
+
+  }
+getProfileInfo() : any{
+  return this.http.get("https://api.github.com/users/" + this.username + "?access_token=631f3af867ec48e0d62a072728ccd80fb463d82f")// + this.clientid + "&client_secret" +this.clientsecret)
+    .pipe(map(res=>res));
+  }
   
 
-  getRepoInfo(){
-    return this.http.get("https://api.github.com/users/" + this.userName
- + "/repos?client_id=" + this.clientId 
- + "&client_secret=" + this.clientSecret)
- .map(res => res.json());
+getRepoInfo() :any{
+  return this.http.get("https://api.github.com/users/" + this.username + "/repos?access_token=631f3af867ec48e0d62a072728ccd80fb463d82f")//+ this.clientid + "&client_secret" +this.clientsecret)
+  .pipe(map(res=>res)); 
 }
+// // getRepo(){
+// //   return this.http.get("https://api.github.com/repositories/" + this.reponame+ "?access_token=631f3af867ec48e0d62a072728ccd80fb463d82f")
+// //   .pipe(map(res=>res))
+// }
 
 updateProfile(username:string) {
-  this.userName = username;
-
-}
+this.username = username;
 }
 
+
+
+}
