@@ -26,14 +26,14 @@ export class ProfileService {
         map(res => res)
       );
    }
-  }
+  
   
 
-//   getRepoInfo(){
-//     return this.http.get("https://api.github.com/users/" + this.userName
-//  + "?client_id=" + this.clientId 
-//  + "&client_secret=" + this.clientSecret)
-//  .map(res => res.json());
-// }
-// }
+  getRepoInfo(){
+    return this.http.get("https://api.github.com/users/" + this.userName
+ + "/repos?client_id=" + this.clientId 
+ + "&client_secret=" + this.clientSecret)
+ .map(res => res.json());
+}
+}
 
