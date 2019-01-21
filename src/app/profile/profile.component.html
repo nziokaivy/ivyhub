@@ -15,7 +15,34 @@
 <div class="panel-body">
   <div class="row">
     <div class="col-sm-3">
-      <img src="{{profile.avatar_url}}" alt="">
+      <img src="{{profile.avatar_url}}" class="img-circle img-responsive" alt="profile picture">
+    </div>
+    <div class="col-sm-5">
+      <ul class="list-group">
+       <li class="list-group-item" *ngIf="profile.bio">{{profile.bio}}</li> 
+       <li class="list-group-item" *ngIf="profile.blog">{{profile.blog}}</li> 
+       <li class="list-group-item" *ngIf="profile.email"><a href="emailto:{{profile.email}}">{{profile.email}}</a></li> 
+      </ul>
+    </div>
+    <div class="col-sm-4">
+      <div>
+        <p>
+          <span class="label label-primary">{{profile.followers}} Followers</span>
+          <span class="label label-success">{{profile.following} Following</span>
+          <span class="label label-info">{{profile.public_repos}} Public Repos</span>
+              
+        </p>
+        <p><a href="{{profile.html_url}}" target="blank class="btn btn-default">View Profile on github</a></p>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Repositories</h3>
+          </div>
+          <div class="panel-body" *ngFor="let repo of repos">
+            
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
