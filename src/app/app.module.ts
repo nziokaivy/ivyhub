@@ -7,6 +7,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileService } from './profile.service';
 import { LandingpageComponent } from './landingpage/landingpage.component';
+import { HighlightDirective } from './highlight.directive';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
     AppComponent,
     routingComponents,
     ProfileComponent,
-    LandingpageComponent
+    LandingpageComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
