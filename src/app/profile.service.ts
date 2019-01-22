@@ -8,7 +8,7 @@ import { Profile } from './profile';
  
 export class ProfileService {
 
-  apiUrl = environment.apiUrl;
+  // apiUrl = environment.apiUrl;
   private username : string;
   private reponame :string;
   
